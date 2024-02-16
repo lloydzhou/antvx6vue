@@ -15,3 +15,4 @@
 11. 再点击页面上的`Go to Graph`按钮，跳转到另外一个页面，能看到`node loaded`显示了更多次
 12. 以此往复，会看到到达`Graph`页面，打印`node loaded`的次数会成倍增加
 
+该演示代码，均来自官方例子：`https://x6.antv.antgroup.com/tutorial/intermediate/vue`
