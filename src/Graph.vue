@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from 'vue'
+  import { defineComponent, ref } from 'vue'
   import ProgressNode from './components/Node.vue'
   // import ProgressNode from './components/ProgressNode.vue'
   import { Graph } from '@antv/x6'
@@ -22,14 +22,18 @@
     component: ProgressNode,
   })
   const TeleportContainer = getTeleport()
+  const graph = ref()
 
   export default defineComponent({
     name: 'Node',
     components: {
       TeleportContainer,
     },
+    unmounted() {
+      graph.value.dispose()
+    },
     mounted() {
-      const graph = new Graph({
+      graph.value = new Graph({
         container: document.getElementById('container')!,
         background: {
           color: '#F2F7FA',
@@ -38,7 +42,7 @@
         height: 100,
       })
 
-      graph.addNode({
+      graph.value.addNode({
         shape: 'custom-vue-node',
         x: 100,
         y: 60,
